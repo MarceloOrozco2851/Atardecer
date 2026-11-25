@@ -719,6 +719,58 @@
   }
   .pie svg{ width:15px; height:15px; color:#8ab98c; flex:none; }
 
+  /* ---------- Aviso de archivos pendientes ---------- */
+  .taller{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(9px,2.5vw,14px);
+    width:100%;
+    max-width:430px;
+    margin:clamp(10px,2vh,18px) auto 0;
+    padding:12px clamp(13px,4vw,20px);
+    border:1px dashed rgba(232,193,95,.3);
+    border-radius:999px;
+    background:
+      radial-gradient(120% 180% at 50% 120%, rgba(232,150,80,.1), transparent 65%),
+      rgba(232,193,95,.035);
+    text-align:center;
+  }
+  .taller p{
+    margin:0;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(.78rem, 3.3vw, .92rem);
+    line-height:1.35;
+    letter-spacing:.015em;
+    color:#aeb4cc;
+    animation:latidoAviso 5s ease-in-out infinite;
+  }
+  .tuerca{
+    flex:none;
+    width:clamp(20px, 5.5vw, 25px);
+    height:clamp(20px, 5.5vw, 25px);
+    color:var(--oro);
+    opacity:.78;
+    filter:drop-shadow(0 2px 5px rgba(0,0,0,.4));
+    transform-origin:center;
+  }
+  .tuerca svg{ display:block; width:100%; height:100%; }
+  .tuerca--izq{ animation:girarTuercaIzq 6s ease-in-out infinite alternate; }
+  .tuerca--der{ animation:girarTuercaDer 6s ease-in-out infinite alternate; }
+  @keyframes girarTuercaIzq{
+    from{ transform:rotate(-16deg); }
+    to{ transform:rotate(16deg); }
+  }
+  @keyframes girarTuercaDer{
+    from{ transform:rotate(16deg); }
+    to{ transform:rotate(-16deg); }
+  }
+  @keyframes latidoAviso{
+    0%,100%{ opacity:.68; }
+    50%{ opacity:1; }
+  }
+
   /* ============ VISOR DE FOTO ============ */
   .visor{
     position:fixed; inset:0; z-index:80;
@@ -789,7 +841,7 @@
       transition-duration:.15s !important;
     }
     .petalos, .burst{ display:none; }
-    .jardin__tulipan, .birrete{ animation:none !important; }
+    .jardin__tulipan, .birrete, .tuerca, .taller p{ animation:none !important; }
     .revelar{ opacity:1; transform:none; }
   }
 </style>
@@ -876,6 +928,20 @@
     </svg>
     Hecho con amor para ti
   </footer>
+
+  <div class="taller">
+    <span class="tuerca tuerca--izq" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="currentColor">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.1 3.5h15.8L30 16l-6.1 12.5H8.1L2 16 8.1 3.5ZM12 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"/>
+      </svg>
+    </span>
+    <p>tamos trabajando con el resto de archivos</p>
+    <span class="tuerca tuerca--der" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="currentColor">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.1 3.5h15.8L30 16l-6.1 12.5H8.1L2 16 8.1 3.5ZM12 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"/>
+      </svg>
+    </span>
+  </div>
 </main>
 
 <!-- ================= VISOR ================= -->
@@ -939,10 +1005,8 @@ const ATARDECERES = [
   },
   {
     n: '05', dia: 25, fecha: '25 NOV',
-    foto: 'fotos/atardecer-05.jpg',
-    pos: 'center 52%',
-    alt: 'Volcán al atardecer con una nube iluminada',
-    frase: 'Cinco. El cielo se está preparando para tu graduación.'
+    bloqueado: true,
+    mensaje: 'Se desbloquea el 25 de noviembre.'
   },
   {
     n: '06', dia: 26, fecha: '26 NOV',
