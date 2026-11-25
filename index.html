@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#070d24" />
 <title>Tiempo para graduarse · Melida</title>
-<meta name="description" content="Cinco atardeceres para Melida, del 23 al 27 de noviembre. Un regalo de Marcelo." />
+<meta name="description" content="Siete atardeceres para Melida, del 21 al 27 de noviembre. Un regalo de Marcelo." />
 
 <!-- Tulipán como icono -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070d24'/%3E%3Cpath d='M32 41c-6.6 0-12-5.4-12-12V15.5c0-2.2 2.6-3.2 4.1-1.5L32 22l7.9-8c1.5-1.7 4.1-.7 4.1 1.5V29c0 6.6-5.4 12-12 12Z' fill='%23e8c15f'/%3E%3Cpath d='M32 22v17' stroke='%23c99b34' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M32 40v15' stroke='%2378c48f' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M32 55c-7-1.6-10.5-6.4-10.5-12 6.2 0 10.5 4.6 10.5 12Z' fill='%2378c48f'/%3E%3C/svg%3E" />
@@ -617,6 +617,59 @@
     50%{ opacity:.9; }
   }
 
+  /* Atardeceres bloqueados */
+  .atardecer--bloqueado{
+    border-color:rgba(232,193,95,.16);
+    background:linear-gradient(180deg, rgba(24,34,70,.48), rgba(7,12,30,.5));
+  }
+  .atardecer__cielo--bloqueado{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    cursor:default;
+    background:
+      radial-gradient(75% 65% at 50% 32%, rgba(232,193,95,.09), transparent 68%),
+      radial-gradient(110% 90% at 50% 100%, rgba(50,38,92,.3), transparent 60%),
+      linear-gradient(180deg, #0c1430 0%, #111c40 58%, #090f25 100%);
+    box-shadow:inset 0 0 0 1px rgba(232,193,95,.08);
+  }
+  .atardecer__cielo--bloqueado::before{
+    content:'';
+    position:absolute; inset:0;
+    z-index:1;
+    background-image:
+      radial-gradient(1.3px 1.3px at 18% 22%, rgba(255,255,255,.6), transparent 100%),
+      radial-gradient(1.1px 1.1px at 38% 14%, rgba(255,255,255,.4), transparent 100%),
+      radial-gradient(1.4px 1.4px at 62% 26%, rgba(255,255,255,.5), transparent 100%),
+      radial-gradient(1.1px 1.1px at 82% 16%, rgba(255,255,255,.35), transparent 100%),
+      radial-gradient(1.2px 1.2px at 74% 42%, rgba(255,255,255,.3), transparent 100%);
+    opacity:.55;
+    pointer-events:none;
+  }
+  .atardecer__candado{
+    position:relative;
+    z-index:2;
+    width:28px;
+    height:28px;
+    color:var(--oro);
+    opacity:.9;
+    filter:drop-shadow(0 3px 8px rgba(0,0,0,.4));
+  }
+  .atardecer__candado svg{ display:block; width:100%; height:100%; }
+  .atardecer__estado{
+    position:relative;
+    z-index:2;
+    font-size:.44rem;
+    letter-spacing:.24em;
+    text-indent:.24em;
+    text-transform:uppercase;
+    color:#c9a86a;
+  }
+  .atardecer__frase--bloqueada{ color:#9aa1bf; }
+  .atardecer--final .atardecer__cielo--bloqueado .atardecer__candado{ width:34px; height:34px; }
+
   .atardecer--hoy{
     border-color:rgba(232,193,95,.75);
     box-shadow:0 0 0 1px rgba(232,193,95,.32), 0 0 26px rgba(232,193,95,.18);
@@ -773,7 +826,7 @@
 
   <header class="hero">
     <p class="hero__etiqueta">Nuestra cuenta regresiva</p>
-    <h1 class="hero__nombres">Cinco <em>atardeceres</em></h1>
+    <h1 class="hero__nombres">Siete <em>atardeceres</em></h1>
     <span class="hero__linea" aria-hidden="true">
       <i></i>
       <svg viewBox="0 0 64 64" fill="none">
@@ -785,24 +838,24 @@
       <i></i>
     </span>
     <p class="hero__lugar">Marcelo <span class="hero__amp">&amp;</span> Melida</p>
-    <p class="hero__nota">Del 23 al 27 de noviembre, los cielos que faltan para tu graduación.</p>
+    <p class="hero__nota">Del 21 al 27 de noviembre, los cielos que faltan para tu graduación.</p>
   </header>
 
   <section class="panel panel--cuenta revelar" aria-labelledby="tituloCuenta">
     <p class="etiqueta">Cuenta regresiva</p>
     <h2 class="titulo-panel" id="tituloCuenta">Tu graduación</h2>
-    <p class="sub-panel">Los últimos cinco cielos antes de ese día.</p>
+    <p class="sub-panel">Los últimos siete cielos antes de ese día.</p>
 
     <div class="cuenta">
-      <span class="cuenta__num" id="cuentaNum" aria-hidden="true">5</span>
+      <span class="cuenta__num" id="cuentaNum" aria-hidden="true">7</span>
       <p class="cuenta__label" id="cuentaLabel">atardeceres para tu graduación</p>
       <p class="cuenta__reloj" id="relojAtardecer" aria-live="off">Calculando…</p>
     </div>
   </section>
 
   <section class="panel panel--soles revelar" aria-labelledby="tituloSoles">
-    <p class="etiqueta">Del 23 al 27 de noviembre</p>
-    <h2 class="titulo-panel" id="tituloSoles">Los cinco cielos</h2>
+    <p class="etiqueta">Del 21 al 27 de noviembre</p>
+    <h2 class="titulo-panel" id="tituloSoles">Los siete cielos</h2>
     <p class="sub-panel">Toca cada atardecer para verlo completo.</p>
     <ol class="soles" id="soles"></ol>
   </section>
@@ -848,7 +901,7 @@
 
 <script>
 /* ============================================================
-   CINCO ATARDECERES · PARA MELIDA
+   SIETE ATARDECERES · PARA MELIDA
    ============================================================ */
 
 const $ = (s) => document.querySelector(s);
@@ -857,40 +910,50 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 /* ---------- Datos de los atardeceres ---------- */
 const ATARDECERES = [
   {
-    n: '01', dia: 23, fecha: '23 NOV',
+    n: '01', dia: 21, fecha: '21 NOV',
     foto: 'fotos/atardecer-01.jpg',
     pos: 'center 58%',
     alt: 'Rayos de luz sobre las montañas al atardecer',
     frase: 'Uno. A esta hora, en algún lugar, tú también estás contando los días.'
   },
   {
-    n: '02', dia: 24, fecha: '24 NOV',
+    n: '02', dia: 22, fecha: '22 NOV',
     foto: 'fotos/atardecer-02.jpg',
     pos: 'center 55%',
     alt: 'Atardecer entre nubes grises y árboles',
     frase: 'Dos. Todo el esfuerzo de estos años cabe en una sola palabra: orgullo.'
   },
   {
-    n: '03', dia: 25, fecha: '25 NOV',
+    n: '03', dia: 23, fecha: '23 NOV',
     foto: 'fotos/atardecer-03.jpg',
     pos: 'center 60%',
     alt: 'Horizonte dorado bajo un cielo azul profundo',
     frase: 'Tres. Ya casi puedo contar las horas con una sola mano.'
   },
   {
-    n: '04', dia: 26, fecha: '26 NOV',
+    n: '04', dia: 24, fecha: '24 NOV',
     foto: 'fotos/atardecer-04.jpg',
     pos: 'center 62%',
     alt: 'Cielo naranja intenso entre nubes',
     frase: 'Cuatro. El sol se despide despacio, como si supiera lo que viene.'
   },
   {
-    n: '05', dia: 27, fecha: '27 NOV',
+    n: '05', dia: 25, fecha: '25 NOV',
     foto: 'fotos/atardecer-05.jpg',
     pos: 'center 52%',
-    alt: 'El volcán y su nube naranja en el último atardecer',
-    frase: 'Cinco. Es tu graduación, y no hay cielo que alcance para lo orgulloso que estoy de ti.',
-    final: true
+    alt: 'Volcán al atardecer con una nube iluminada',
+    frase: 'Cinco. El cielo se está preparando para tu graduación.'
+  },
+  {
+    n: '06', dia: 26, fecha: '26 NOV',
+    bloqueado: true,
+    mensaje: 'Se desbloquea el 26 de noviembre.'
+  },
+  {
+    n: '07', dia: 27, fecha: '27 NOV',
+    bloqueado: true,
+    final: true,
+    mensaje: 'Se desbloquea el día de tu graduación.'
   }
 ];
 
@@ -904,6 +967,8 @@ const hojaSVG = '<svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 2C5.5 
 const tulipanSVG = '<svg viewBox="0 0 64 132" fill="none" aria-hidden="true"><path d="M32 36V126" stroke="#6f9f6a" stroke-width="3.4" stroke-linecap="round"/><path d="M32 84c-10-1-15.6-6.2-16.6-15.2 9.4 0 15 5.2 16.6 15.2Z" fill="#79a874"/><path d="M32 96c9-.9 14-5.2 15-13-8.4 0-13.5 4.4-15 13Z" fill="#5c8b58"/><path d="M32 104c-13-1.6-20-9-21-21 12 0 19 7.5 21 21Z" fill="#6f9f6a"/><path d="M32 118c12-1 18.5-7.5 19.5-18-10.5 0-17.5 6-19.5 18Z" fill="#5c8b58"/><path d="M32 6c-3.6 3.8-6.1 8.2-6.1 13.4v6.2c0 8.2 2.7 13.4 6.1 13.4s6.1-5.2 6.1-13.4v-6.2C38.1 14.2 35.6 9.8 32 6Z" fill="currentColor"/><path d="M25.9 13.5c-4.6 3.6-7.2 8.7-7.2 14.3 0 6.2 2.6 10.8 6.1 12.2V26.5c0-4.1.2-8 1.1-13Z" fill="currentColor" opacity=".92"/><path d="M38.1 13.5c4.6 3.6 7.2 8.7 7.2 14.3 0 6.2-2.6 10.8-6.1 12.2V26.5c0-4.1-.2-8-1.1-13Z" fill="currentColor" opacity=".92"/></svg>';
 
 const birreteSVG = '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 11 3 24.5 32 38l29-13.5L32 11Z" fill="currentColor"/><path d="M15 32v12.5c0 4.7 7.6 8.5 17 8.5s17-3.8 17-8.5V32" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M57 25v18" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><circle cx="57" cy="45.5" r="3.4" fill="currentColor"/></svg>';
+
+const candadoSVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.8" y="10.2" width="14.4" height="10.4" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M8.1 10.2V7.4a3.9 3.9 0 0 1 7.8 0v2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="15.4" r="1.4" fill="currentColor"/></svg>';
 
 /* ---------- Pétalos cayendo ---------- */
 function crearPetalos(){
@@ -992,23 +1057,44 @@ function soltarHojas(el){
 }
 
 /* ---------- Pintar los atardeceres ---------- */
-$('#soles').innerHTML = ATARDECERES.map((a, i) => `
-  <li class="atardecer revelar${a.final ? ' atardecer--final' : ''}" data-dia="${a.dia}" data-fecha="${a.final ? a.fecha + ' · TU GRADUACIÓN' : a.fecha}" style="transition-delay:${i * 55}ms">
-    <button class="atardecer__cielo" type="button"
-      data-foto="${a.foto}" data-alt="${a.alt}"
-      data-cap="${a.fecha} · ${a.alt}"
-      aria-label="Ampliar el atardecer del ${a.dia} de noviembre">
-      <img src="${a.foto}" alt="" loading="lazy" style="object-position:${a.pos}">
-      <span class="atardecer__num" aria-hidden="true">${a.n}</span>
-      <span class="atardecer__badge">${a.final ? a.fecha + ' · TU GRADUACIÓN' : a.fecha}</span>
-      <span class="atardecer__lupa" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>
-        </svg>
-      </span>
-    </button>
-    <p class="atardecer__frase">${a.frase}</p>
-  </li>`).join('');
+$('#soles').innerHTML = ATARDECERES.map((a, i) => {
+  const etiqueta = a.final ? a.fecha + ' · TU GRADUACIÓN' : a.fecha;
+
+  if (a.bloqueado){
+    return `
+      <li class="atardecer atardecer--bloqueado revelar${a.final ? ' atardecer--final' : ''}"
+        data-dia="${a.dia}" data-fecha="${etiqueta}" data-bloqueado="true"
+        style="transition-delay:${i * 55}ms">
+        <div class="atardecer__cielo atardecer__cielo--bloqueado">
+          <span class="atardecer__num" aria-hidden="true">${a.n}</span>
+          <span class="atardecer__badge">${etiqueta}</span>
+          <span class="atardecer__candado" aria-hidden="true">${candadoSVG}</span>
+          <span class="atardecer__estado">Próximamente</span>
+        </div>
+        <p class="atardecer__frase atardecer__frase--bloqueada">${a.mensaje}</p>
+      </li>`;
+  }
+
+  return `
+    <li class="atardecer revelar${a.final ? ' atardecer--final' : ''}"
+      data-dia="${a.dia}" data-fecha="${etiqueta}"
+      style="transition-delay:${i * 55}ms">
+      <button class="atardecer__cielo" type="button"
+        data-foto="${a.foto}" data-alt="${a.alt}"
+        data-cap="${a.fecha} · ${a.alt}"
+        aria-label="Ampliar el atardecer del ${a.dia} de noviembre">
+        <img src="${a.foto}" alt="" loading="lazy" style="object-position:${a.pos}">
+        <span class="atardecer__num" aria-hidden="true">${a.n}</span>
+        <span class="atardecer__badge">${etiqueta}</span>
+        <span class="atardecer__lupa" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>
+          </svg>
+        </span>
+      </button>
+      <p class="atardecer__frase">${a.frase}</p>
+    </li>`;
+}).join('');
 
 /* ---------- Cuenta regresiva ---------- */
 (function cuentaGraduacion(){
@@ -1032,7 +1118,7 @@ $('#soles').innerHTML = ATARDECERES.map((a, i) => `
     const dias = diasHasta();
 
     if (dias > 0){
-      num.textContent = Math.min(5, dias + 1);
+      num.textContent = Math.min(7, dias + 1);
       num.classList.remove('cuenta__num--hoy');
       label.textContent = 'atardeceres para tu graduación';
     } else if (dias === 0){
@@ -1059,6 +1145,7 @@ $('#soles').innerHTML = ATARDECERES.map((a, i) => `
 
     const hoy = new Date();
     tarjetas.forEach((card) => {
+      if (card.dataset.bloqueado === 'true') return;
       const fechaCard = new Date(2026, 10, Number(card.dataset.dia));
       const esHoy = hoy.getFullYear() === 2026 && hoy.getMonth() === 10 && hoy.getDate() === fechaCard.getDate();
       card.classList.toggle('atardecer--hoy', esHoy);
