@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#070d24" />
+<title>Siete atardeceres · Para Melida</title>
+<meta name="description" content="Siete atardeceres para Melida, del 21 al 27 de noviembre. Un regalo de Marcelo." />
+
+<!-- Tulipán como icono -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070d24'/%3E%3Cpath d='M32 41c-6.6 0-12-5.4-12-12V15.5c0-2.2 2.6-3.2 4.1-1.5L32 22l7.9-8c1.5-1.7 4.1-.7 4.1 1.5V29c0 6.6-5.4 12-12 12Z' fill='%23e8c15f'/%3E%3Cpath d='M32 22v17' stroke='%23c99b34' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M32 40v15' stroke='%2378c48f' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M32 55c-7-1.6-10.5-6.4-10.5-12 6.2 0 10.5 4.6 10.5 12Z' fill='%2378c48f'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ BASE ============ */
+  :root{
+    --bg:#060b1e;
+    --bg-2:#0a1330;
+    --oro:#e8c15f;
+    --oro-claro:#f4dda2;
+    --oro-oscuro:#b98d2b;
+    --linea:rgba(232,193,95,.3);
+    --linea-suave:rgba(232,193,95,.14);
+    --crema:#f7f1e3;
+    --texto:#c3c8de;
+    --tenue:#9aa1bf;
+    --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Jost', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    min-height:100%;
+    font-family:var(--sans);
+    color:var(--texto);
+    background:
+      radial-gradient(1100px 700px at 50% -8%, #1a2a63 0%, transparent 62%),
+      radial-gradient(900px 700px at 92% 100%, #2a1b49 0%, transparent 60%),
+      linear-gradient(175deg, #070c20 0%, var(--bg-2) 45%, #070d24 100%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body.sin-scroll{ overflow:hidden; }
+
+  [hidden]{ display:none !important; }
+
+  ::selection{ background:rgba(232,193,95,.32); color:#fff; }
+
+  button{ font-family:inherit; }
+
+  :focus-visible{ outline:2px solid var(--oro-claro); outline-offset:4px; }
+
+  /* ============ FONDO ============ */
+  .fondo{
+    position:fixed; inset:0; z-index:0;
+    overflow:hidden; pointer-events:none;
+  }
+  .fondo::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 16%, rgba(255,246,220,.7), transparent 100%),
+      radial-gradient(1.2px 1.2px at 26% 8%, rgba(255,246,220,.45), transparent 100%),
+      radial-gradient(1.6px 1.6px at 41% 22%, rgba(255,246,220,.55), transparent 100%),
+      radial-gradient(1.1px 1.1px at 63% 12%, rgba(255,246,220,.5), transparent 100%),
+      radial-gradient(1.4px 1.4px at 78% 24%, rgba(255,246,220,.6), transparent 100%),
+      radial-gradient(1.2px 1.2px at 91% 9%, rgba(255,246,220,.4), transparent 100%),
+      radial-gradient(1.1px 1.1px at 86% 38%, rgba(255,246,220,.35), transparent 100%),
+      radial-gradient(1.3px 1.3px at 8% 42%, rgba(255,246,220,.3), transparent 100%);
+    opacity:.75;
+  }
+  .fondo::after{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 40%, transparent 42%, rgba(3,6,16,.55) 100%);
+  }
+  .fondo__brillo{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.38;
+    will-change:transform;
+  }
+  .fondo__brillo--1{
+    width:56vw; height:56vw;
+    left:-16vw; top:-10vw;
+    background:radial-gradient(circle, rgba(65,93,180,.55), transparent 68%);
+    animation:deriva 26s ease-in-out infinite alternate;
+  }
+  .fondo__brillo--2{
+    width:48vw; height:48vw;
+    right:-14vw; bottom:-12vw;
+    background:radial-gradient(circle, rgba(214,124,88,.35), transparent 68%);
+    animation:deriva 32s -8s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes deriva{
+    from{ transform:translate3d(-2%, -1%, 0) scale(1); }
+    to{ transform:translate3d(3%, 2%, 0) scale(1.08); }
+  }
+
+  /* ---------- Pétalos cayendo ---------- */
+  .petalos{
+    position:fixed; inset:0; z-index:1;
+    overflow:hidden; pointer-events:none;
+  }
+  .petalo-cae{
+    position:absolute;
+    top:-8vh;
+    opacity:0;
+    will-change:transform, opacity;
+    animation-name:caer;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+  }
+  .petalo-cae svg{ display:block; width:100%; height:100%; }
+  @keyframes caer{
+    0%   { transform:translate3d(0,-8vh,0) rotate(0deg); opacity:0; }
+    8%   { opacity:.6; }
+    50%  { transform:translate3d(var(--deriva2, 30px),50vh,0) rotate(190deg); }
+    90%  { opacity:.36; }
+    100% { transform:translate3d(calc(var(--deriva2, 30px) * -1),112vh,0) rotate(380deg); opacity:0; }
+  }
+
+  /* ---------- Jardín de tulipanes ---------- */
+  .jardin{
+    position:absolute;
+    left:0; right:0; bottom:-4px;
+    height:clamp(140px, 24vh, 220px);
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .jardin__tulipan{
+    position:absolute;
+    bottom:-2px;
+    height:var(--alto, 110px);
+    width:calc(var(--alto, 110px) * .485);
+    transform-origin:bottom center;
+    animation:sway 6s ease-in-out infinite;
+    opacity:.75;
+    pointer-events:auto;
+    cursor:pointer;
+    filter:drop-shadow(0 6px 10px rgba(2,5,16,.45));
+    transition:filter .3s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .jardin__tulipan:hover{ filter:drop-shadow(0 9px 16px rgba(2,5,16,.55)) brightness(1.07); }
+  .jardin__tulipan:focus-visible{ outline:1px solid rgba(244,221,162,.7); outline-offset:3px; border-radius:20px; }
+  .jardin__tulipan svg{ display:block; width:100%; height:100%; }
+  .jardin--final{
+    position:relative;
+    left:auto; right:auto; bottom:auto;
+    height:175px;
+    margin:0 0 -6px;
+    overflow:hidden;
+  }
+  @keyframes sway{
+    0%,100% { transform:rotate(-2.2deg); }
+    50%     { transform:rotate(2.6deg); }
+  }
+
+  /* ---------- Explosión de pétalos ---------- */
+  .burst{
+    position:fixed; inset:0; z-index:70;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .burst__petalo{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    will-change:transform, opacity;
+  }
+  .burst__petalo svg{
+    display:block; width:100%; height:100%;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+  }
+
+  /* ---------- Birretes flotando ---------- */
+  .birretes{
+    position:fixed; inset:0; z-index:3;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .birrete{
+    position:absolute;
+    left:var(--x);
+    top:var(--y);
+    width:var(--s);
+    height:var(--s);
+    color:var(--c, var(--oro));
+    opacity:var(--o, .3);
+    will-change:transform;
+    animation:flotarBirrete var(--d, 9s) var(--delay, 0s) ease-in-out infinite alternate;
+    filter:drop-shadow(0 3px 7px rgba(0,0,0,.35));
+  }
+  .birrete svg{ display:block; width:100%; height:100%; }
+  @keyframes flotarBirrete{
+    from{ transform:translate3d(0,0,0) rotate(var(--r, -7deg)) scale(.96); }
+    to{ transform:translate3d(7px,-15px,0) rotate(calc(var(--r, -7deg) + 12deg)) scale(1.04); }
+  }
+
+  /* ============ SITIO ============ */
+  .sitio{
+    position:relative; z-index:2;
+    display:flex;
+    width:100%; max-width:660px;
+    margin:0 auto;
+    padding:clamp(18px,4vh,32px) 18px calc(48px + env(safe-area-inset-bottom));
+    flex-direction:column;
+    gap:clamp(18px,3.6vw,26px);
+    animation:sitioEntra .85s .05s cubic-bezier(.22,.9,.28,1) both;
+  }
+  @keyframes sitioEntra{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:none; }
+  }
+
+  .revelar{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .9s cubic-bezier(.22,.9,.28,1), transform .9s cubic-bezier(.22,.9,.28,1);
+  }
+  .revelar.visible{ opacity:1; transform:none; }
+
+  /* ---------- Foto de graduación ---------- */
+  .marco{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    margin:0 auto;
+    padding:9px 9px 0;
+    border-radius:16px;
+    border:1px solid rgba(232,193,95,.42);
+    background:linear-gradient(180deg,#fffdf7 0%,#f6eedc 100%);
+    box-shadow:
+      0 28px 55px rgba(1,4,14,.58),
+      0 2px 0 rgba(255,255,255,.7) inset,
+      0 0 0 1px rgba(255,250,235,.18);
+  }
+  .marco::before{
+    content:'';
+    position:absolute; inset:-14px;
+    border-radius:22px;
+    background:radial-gradient(70% 60% at 50% 15%, rgba(232,193,95,.22), transparent 70%);
+    filter:blur(10px);
+    pointer-events:none;
+    z-index:-1;
+  }
+  .marco__foto{
+    position:relative;
+    display:block;
+    width:100%;
+    padding:0;
+    border:0;
+    border-radius:9px;
+    overflow:hidden;
+    background:#0a1029;
+    cursor:zoom-in;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .marco__foto img{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:923 / 1280;
+    object-fit:cover;
+    transition:transform .85s cubic-bezier(.22,.9,.28,1), filter .5s ease;
+  }
+  .marco__foto:hover img,
+  .marco__foto:focus-visible img{ transform:scale(1.025); filter:brightness(1.03); }
+  .marco__foto:focus-visible{ outline-offset:-3px; }
+  .marco__lupa{
+    position:absolute;
+    right:10px; bottom:10px;
+    display:grid; place-items:center;
+    width:28px; height:28px;
+    border-radius:50%;
+    border:1px solid rgba(68,58,38,.28);
+    background:rgba(255,252,244,.82);
+    color:#5e5238;
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .marco__lupa svg{ width:13px; height:13px; }
+  .marco__foto:hover .marco__lupa,
+  .marco__foto:focus-visible .marco__lupa{ opacity:1; transform:none; }
+  .marco figcaption{
+    padding:12px 6px 14px;
+    text-align:center;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1rem,3.8vw,1.12rem);
+    line-height:1.3;
+    color:#7d7258;
+  }
+  .marco figcaption span{ color:#b98d2b; padding:0 .32em; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    text-align:center;
+    padding:clamp(4px,2vh,16px) 4px clamp(2px,1vh,8px);
+  }
+  .hero > *{ animation:heroEntra .95s cubic-bezier(.22,.9,.28,1) both; }
+  .hero > *:nth-child(2){ animation-delay:.08s; }
+  .hero > *:nth-child(3){ animation-delay:.16s; }
+  .hero > *:nth-child(4){ animation-delay:.24s; }
+  .hero > *:nth-child(5){ animation-delay:.32s; }
+  @keyframes heroEntra{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:none; }
+  }
+
+  .hero__etiqueta{
+    margin:0 0 14px;
+    font-size:.58rem; letter-spacing:.42em; text-indent:.42em;
+    text-transform:uppercase; color:var(--tenue);
+  }
+  .hero__nombres{
+    margin:0;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.6rem, 11.5vw, 3.9rem);
+    line-height:1.05;
+    letter-spacing:.005em;
+    color:var(--crema);
+    text-shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  .hero__nombres em{
+    font-style:italic;
+    color:var(--oro);
+  }
+  .hero__linea{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin:16px auto 0;
+  }
+  .hero__linea i{
+    display:block;
+    width:36px; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(232,193,95,.7));
+  }
+  .hero__linea i:last-child{ background:linear-gradient(270deg,transparent,rgba(232,193,95,.7)); }
+  .hero__linea svg{ width:15px; height:15px; color:var(--oro); }
+  .hero__lugar{
+    margin:15px 0 0;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.05rem, 4vw, 1.25rem);
+    letter-spacing:.04em;
+    color:#d9d1be;
+  }
+  .hero__lugar .hero__amp{
+    color:var(--oro);
+    font-size:1.2em;
+    padding:0 .28em;
+  }
+  .hero__nota{
+    max-width:32ch;
+    margin:14px auto 0;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1rem,3.7vw,1.12rem);
+    line-height:1.5;
+    color:#b5bcd4;
+  }
+
+  /* ---------- Paneles ---------- */
+  .panel{
+    position:relative;
+    width:100%;
+    padding:clamp(24px,6.2vw,38px) clamp(20px,5.6vw,34px);
+    border-radius:22px;
+    border:1px solid var(--linea);
+    background:
+      radial-gradient(130% 90% at 50% -10%, rgba(232,193,95,.09), transparent 58%),
+      linear-gradient(180deg, rgba(19,29,66,.82), rgba(8,14,36,.94));
+    box-shadow:0 24px 50px rgba(1,4,14,.4), 0 1px 0 rgba(255,255,255,.05) inset;
+    text-align:center;
+    overflow:hidden;
+  }
+  .etiqueta{
+    margin:0 0 12px;
+    font-size:.58rem; letter-spacing:.36em; text-indent:.36em;
+    text-transform:uppercase;
+    color:#c9a86a;
+    font-weight:400;
+  }
+  .titulo-panel{
+    margin:0 0 6px;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(1.5rem,5.6vw,1.85rem);
+    line-height:1.25;
+    color:var(--crema);
+    letter-spacing:.005em;
+  }
+  .sub-panel{
+    margin:0 auto;
+    max-width:36ch;
+    font-size:.84rem;
+    font-weight:300;
+    line-height:1.65;
+    color:var(--tenue);
+  }
+
+  /* ---------- Cuenta regresiva ---------- */
+  .cuenta{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    margin:20px 0 0;
+    padding:18px 10px 22px;
+    border-radius:16px;
+    border:1px solid rgba(232,193,95,.16);
+    background:
+      radial-gradient(80% 120% at 50% 120%, rgba(232,150,80,.18), transparent 60%),
+      rgba(232,193,95,.03);
+  }
+  .cuenta__num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(4rem, 18vw, 5.4rem);
+    line-height:.9;
+    color:var(--oro-claro);
+    text-shadow:0 0 34px rgba(240,170,90,.35);
+    transition:font-size .3s ease;
+  }
+  .cuenta__num--hoy{
+    font-size:clamp(2.4rem, 11vw, 3.2rem);
+    letter-spacing:.06em;
+  }
+  .cuenta__label{
+    margin:8px 0 12px;
+    font-size:.56rem;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:#c9a86a;
+  }
+  .cuenta__reloj{
+    margin:0;
+    padding:.42rem .95rem;
+    border-radius:999px;
+    border:1px solid rgba(232,193,95,.28);
+    background:rgba(232,193,95,.06);
+    font-size:.64rem;
+    letter-spacing:.08em;
+    color:#9aa1bf;
+    line-height:1.5;
+  }
+  .cuenta__reloj b{
+    color:#e9d3a1;
+    font-weight:400;
+    letter-spacing:.1em;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- Soles ---------- */
+  .soles{
+    list-style:none;
+    margin:20px 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .atardecer{
+    margin:0;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(232,193,95,.2);
+    background:linear-gradient(180deg, rgba(232,193,95,.05), rgba(7,12,30,.35));
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .35s ease, box-shadow .35s ease;
+  }
+  .atardecer--final{ grid-column:1 / -1; }
+
+  .atardecer__cielo{
+    position:relative;
+    display:block;
+    width:100%;
+    aspect-ratio:4/3;
+    padding:0;
+    border:0;
+    background:#0a1029;
+    overflow:hidden;
+    cursor:zoom-in;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .atardecer__cielo img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    filter:saturate(.94) contrast(1.02);
+    transition:transform .85s cubic-bezier(.22,.9,.28,1), filter .5s ease;
+  }
+  .atardecer__cielo::after{
+    content:'';
+    position:absolute; inset:0;
+    z-index:1;
+    background:
+      linear-gradient(180deg, rgba(4,8,20,.38) 0%, transparent 28%, transparent 66%, rgba(4,8,20,.42) 100%),
+      radial-gradient(120% 90% at 50% 100%, rgba(6,10,24,.2), transparent 60%);
+    pointer-events:none;
+  }
+  .atardecer__cielo:hover img,
+  .atardecer__cielo:focus-visible img{ transform:scale(1.05); filter:saturate(1.04) contrast(1.03); }
+  .atardecer__cielo:focus-visible{ outline-offset:-3px; }
+
+  .atardecer__num{
+    position:absolute;
+    top:8px; left:10px;
+    z-index:2;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1rem;
+    color:rgba(255,248,230,.9);
+    text-shadow:0 2px 8px rgba(0,0,0,.55);
+  }
+  .atardecer__badge{
+    position:absolute;
+    top:8px; right:9px;
+    z-index:2;
+    padding:3px 7px;
+    border-radius:999px;
+    border:1px solid rgba(255,240,210,.35);
+    background:rgba(10,10,25,.42);
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+    font-size:.42rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#fff3d6;
+    white-space:nowrap;
+  }
+  .atardecer__lupa{
+    position:absolute;
+    right:8px; bottom:8px;
+    z-index:2;
+    display:grid; place-items:center;
+    width:25px; height:25px;
+    border-radius:50%;
+    border:1px solid rgba(255,240,210,.35);
+    background:rgba(8,10,25,.45);
+    color:#fff3d6;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .atardecer__lupa svg{ width:12px; height:12px; }
+  .atardecer__cielo:hover .atardecer__lupa,
+  .atardecer__cielo:focus-visible .atardecer__lupa{ opacity:1; transform:none; }
+
+  .atardecer__frase{
+    margin:0;
+    flex:1;
+    padding:11px 12px 13px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(.78rem, 3.3vw, .9rem);
+    line-height:1.45;
+    color:#e8e2d2;
+  }
+  .atardecer--final .atardecer__cielo{ aspect-ratio:16/9; }
+  .atardecer--final .atardecer__frase{
+    font-size:clamp(.9rem, 3.6vw, 1rem);
+    text-align:center;
+    padding:14px 16px 16px;
+  }
+  .atardecer--final .atardecer__cielo::before{
+    content:'';
+    position:absolute; inset:0;
+    z-index:1;
+    background-image:
+      radial-gradient(1.4px 1.4px at 18% 22%, rgba(255,255,255,.8), transparent 100%),
+      radial-gradient(1.2px 1.2px at 32% 12%, rgba(255,255,255,.6), transparent 100%),
+      radial-gradient(1.6px 1.6px at 55% 18%, rgba(255,255,255,.75), transparent 100%),
+      radial-gradient(1.2px 1.2px at 72% 10%, rgba(255,255,255,.55), transparent 100%),
+      radial-gradient(1.5px 1.5px at 86% 24%, rgba(255,255,255,.7), transparent 100%),
+      radial-gradient(1.2px 1.2px at 8% 10%, rgba(255,255,255,.5), transparent 100%);
+    opacity:.85;
+    animation:parpadeo 6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes parpadeo{
+    0%,100%{ opacity:.55; }
+    50%{ opacity:.9; }
+  }
+
+  .atardecer--hoy{
+    border-color:rgba(232,193,95,.75);
+    box-shadow:0 0 0 1px rgba(232,193,95,.32), 0 0 26px rgba(232,193,95,.18);
+  }
+  .atardecer--hoy .atardecer__frase{ color:#fff8e8; }
+  .atardecer--hoy .atardecer__badge{
+    background:rgba(232,193,95,.92);
+    border-color:transparent;
+    color:#241b05;
+  }
+
+  /* ---------- Cierre ---------- */
+  .cierre{
+    text-align:center;
+    padding:clamp(16px,4vh,30px) 10px 0;
+  }
+  .cierre p{
+    margin:0 auto;
+    max-width:28ch;
+    font-family:var(--serif);
+    font-size:clamp(1.35rem,5.6vw,1.7rem);
+    font-style:italic;
+    line-height:1.55;
+    color:var(--oro-claro);
+  }
+  .cierre .firma{
+    display:block;
+    margin-top:16px;
+    font-family:var(--serif);
+    font-size:clamp(1.8rem,7vw,2.3rem);
+    font-style:italic;
+    color:var(--crema);
+  }
+  .cierre .firma small{
+    display:block;
+    margin-top:.5rem;
+    font-family:var(--sans); font-style:normal;
+    font-size:.52rem; letter-spacing:.3em; text-transform:uppercase;
+    color:#a98f5e;
+  }
+
+  .pie{
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    margin-top:10px; padding-bottom:6px;
+    font-size:.54rem; letter-spacing:.28em; text-transform:uppercase;
+    color:#7c83a3;
+  }
+  .pie svg{ width:15px; height:15px; color:#8ab98c; flex:none; }
+
+  /* ============ VISOR DE FOTO ============ */
+  .visor{
+    position:fixed; inset:0; z-index:80;
+    display:grid; place-items:center;
+    padding:max(18px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
+    background:rgba(3,6,16,.94);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s ease, visibility .35s;
+    cursor:zoom-out;
+  }
+  .visor.abierto{ opacity:1; visibility:visible; }
+  .visor__figura{
+    margin:0;
+    display:flex; flex-direction:column; align-items:center;
+    gap:14px;
+    max-width:min(1180px, 100%);
+    cursor:default;
+  }
+  .visor__figura img{
+    display:block;
+    width:auto; height:auto;
+    max-width:100%;
+    max-height:80vh;
+    border-radius:8px;
+    border:1px solid rgba(232,193,95,.35);
+    background:#0a1029;
+    box-shadow:0 30px 70px rgba(0,0,0,.65);
+  }
+  .visor__figura figcaption{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(.9rem, 3.5vw, 1.05rem);
+    line-height:1.4;
+    color:var(--oro-claro);
+    text-align:center;
+  }
+  .visor__cerrar{
+    position:fixed;
+    top:max(16px, env(safe-area-inset-top));
+    right:16px;
+    width:44px; height:44px;
+    display:grid; place-items:center;
+    border-radius:50%;
+    border:1px solid rgba(232,193,95,.4);
+    background:rgba(7,12,30,.9);
+    color:#e9d9b4;
+    cursor:pointer;
+    transition:background .25s, color .25s;
+  }
+  .visor__cerrar:hover{ background:rgba(232,193,95,.2); color:#fff; }
+  .visor__cerrar svg{ width:17px; height:17px; }
+
+  /* ============ AJUSTES ============ */
+  @media (max-width:420px){
+    .atardecer__frase{ font-size:.8rem; }
+    .atardecer--final .atardecer__frase{ font-size:.92rem; }
+    .hero__nombres{ font-size:clamp(2.4rem,11vw,2.9rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{
+      animation-duration:.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.15s !important;
+    }
+    .petalos, .burst{ display:none; }
+    .jardin__tulipan, .birrete{ animation:none !important; }
+    .revelar{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="fondo" aria-hidden="true">
+  <span class="fondo__brillo fondo__brillo--1"></span>
+  <span class="fondo__brillo fondo__brillo--2"></span>
+</div>
+<div class="petalos" id="petalos" aria-hidden="true"></div>
+<div class="birretes" id="birretes" aria-hidden="true"></div>
+<div class="burst" id="burst" aria-hidden="true"></div>
+
+<!-- ================= SITIO ================= -->
+<main class="sitio" id="sitio">
+
+  <figure class="marco revelar">
+    <button class="marco__foto" type="button"
+      data-foto="fotos/melida-graduacion.jpg"
+      data-alt="Melida con su birrete de graduación"
+      data-cap="Tu graduación · 27 de noviembre de 2026"
+      aria-label="Ampliar la foto de graduación de Melida">
+      <img src="fotos/melida-graduacion.jpg" alt="" fetchpriority="high"
+        width="923" height="1280">
+      <span class="marco__lupa" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>
+        </svg>
+      </span>
+    </button>
+    <figcaption>Tu graduación <span>·</span> 27 de noviembre de 2026</figcaption>
+  </figure>
+
+  <header class="hero">
+    <p class="hero__etiqueta">Nuestra cuenta regresiva</p>
+    <h1 class="hero__nombres">Siete <em>atardeceres</em></h1>
+    <span class="hero__linea" aria-hidden="true">
+      <i></i>
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M32 41c-6.6 0-12-5.4-12-12V15.5c0-2.2 2.6-3.2 4.1-1.5L32 22l7.9-8c1.5-1.7 4.1-.7 4.1 1.5V29c0 6.6-5.4 12-12 12Z" fill="currentColor"/>
+        <path d="M32 22v17" stroke="#c99b34" stroke-width="2" stroke-linecap="round"/>
+        <path d="M32 40v15" stroke="#78c48f" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 55c-7-1.6-10.5-6.4-10.5-12 6.2 0 10.5 4.6 10.5 12Z" fill="#78c48f"/>
+      </svg>
+      <i></i>
+    </span>
+    <p class="hero__lugar">Marcelo <span class="hero__amp">&amp;</span> Melida</p>
+    <p class="hero__nota">Del 21 al 27 de noviembre, los cielos que faltan para tu graduación.</p>
+  </header>
+
+  <section class="panel panel--cuenta revelar" aria-labelledby="tituloCuenta">
+    <p class="etiqueta">Cuenta regresiva</p>
+    <h2 class="titulo-panel" id="tituloCuenta">Tu graduación</h2>
+    <p class="sub-panel">Los últimos siete cielos antes de ese día.</p>
+
+    <div class="cuenta">
+      <span class="cuenta__num" id="cuentaNum" aria-hidden="true">7</span>
+      <p class="cuenta__label" id="cuentaLabel">atardeceres para tu graduación</p>
+      <p class="cuenta__reloj" id="relojAtardecer" aria-live="off">Calculando…</p>
+    </div>
+  </section>
+
+  <section class="panel panel--soles revelar" aria-labelledby="tituloSoles">
+    <p class="etiqueta">Del 21 al 27 de noviembre</p>
+    <h2 class="titulo-panel" id="tituloSoles">Los siete cielos</h2>
+    <p class="sub-panel">Toca cada atardecer para verlo completo.</p>
+    <ol class="soles" id="soles"></ol>
+  </section>
+
+  <section class="cierre revelar">
+    <p>Melida,<br>por todo lo que somos.<br>Te amo.</p>
+    <span class="firma">Marcelo<small>con todo mi amor</small></span>
+  </section>
+
+  <div class="jardin jardin--final" id="jardinFinal" aria-hidden="true"></div>
+
+  <footer class="pie">
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <path d="M32 41c-6.6 0-12-5.4-12-12V15.5c0-2.2 2.6-3.2 4.1-1.5L32 22l7.9-8c1.5-1.7 4.1-.7 4.1 1.5V29c0 6.6-5.4 12-12 12Z" fill="currentColor"/>
+      <path d="M32 22v17" stroke="#c99b34" stroke-width="2" stroke-linecap="round"/>
+      <path d="M32 40v15" stroke="#78c48f" stroke-width="3" stroke-linecap="round"/>
+      <path d="M32 55c-7-1.6-10.5-6.4-10.5-12 6.2 0 10.5 4.6 10.5 12Z" fill="#78c48f"/>
+    </svg>
+    Hecho con amor para ti
+  </footer>
+</main>
+
+<!-- ================= VISOR ================= -->
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Atardecer ampliado" aria-hidden="true">
+  <button class="visor__cerrar" id="cerrarVisor" type="button" aria-label="Cerrar la foto">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </svg>
+  </button>
+  <figure class="visor__figura">
+    <img id="visorImg" alt="">
+    <figcaption id="visorCap"></figcaption>
+  </figure>
+</div>
+
+<noscript>
+  <style>
+    body{ overflow:auto !important; }
+    .sitio{ display:flex !important; }
+    .revelar{ opacity:1 !important; transform:none !important; }
+  </style>
+</noscript>
+
+<script>
+/* ============================================================
+   SIETE ATARDECERES · PARA MELIDA
+   ============================================================ */
+
+const $ = (s) => document.querySelector(s);
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Datos de los atardeceres ---------- */
+const ATARDECERES = [
+  {
+    n: '07', dia: 21, fecha: '21 NOV',
+    foto: 'fotos/atardecer-01.jpg',
+    pos: 'center 58%',
+    alt: 'Rayos de luz sobre las montañas al atardecer',
+    frase: 'Siete atardeceres y el cielo ya sabe que se acerca tu graduación.'
+  },
+  {
+    n: '06', dia: 22, fecha: '22 NOV',
+    foto: 'fotos/atardecer-02.jpg',
+    pos: 'center 55%',
+    alt: 'Atardecer entre nubes grises y árboles',
+    frase: 'Seis. Cada día que cae te acerca un poco más a ese título que tanto buscaste.'
+  },
+  {
+    n: '05', dia: 23, fecha: '23 NOV',
+    foto: 'fotos/atardecer-03.jpg',
+    pos: 'center 60%',
+    alt: 'Horizonte dorado bajo un cielo azul profundo',
+    frase: 'Cinco. A esta hora, en algún lugar, tú también estás contando los días.'
+  },
+  {
+    n: '04', dia: 24, fecha: '24 NOV',
+    foto: 'fotos/atardecer-04.jpg',
+    pos: 'center 62%',
+    alt: 'Cielo naranja intenso entre nubes',
+    frase: 'Cuatro. Todo el esfuerzo de estos años cabe en una sola palabra: orgullo.'
+  },
+  {
+    n: '03', dia: 25, fecha: '25 NOV',
+    foto: 'fotos/atardecer-05.jpg',
+    pos: 'center 58%',
+    alt: 'Volcán al atardecer con una nube iluminada',
+    frase: 'Tres. Ya casi puedo contar las horas con una sola mano.'
+  },
+  {
+    n: '02', dia: 26, fecha: '26 NOV',
+    foto: 'fotos/atardecer-02.jpg',
+    pos: 'center 70%',
+    alt: 'Nubes oscuras sobre un cielo dorado',
+    frase: 'Dos. El sol se despide despacio, como si supiera lo que viene.'
+  },
+  {
+    n: '01', dia: 27, fecha: '27 NOV',
+    foto: 'fotos/atardecer-05.jpg',
+    pos: 'center 52%',
+    alt: 'El volcán y su nube naranja en el último atardecer',
+    frase: 'Uno. Es tu graduación, y no hay cielo que alcance para lo orgulloso que estoy de ti.',
+    final: true
+  }
+];
+
+const FECHA_GRADUACION = new Date(2026, 10, 27, 18, 15, 0);
+
+/* ---------- SVGs ---------- */
+const petaloSVG = '<svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 1.6C7.1 7.1 4.1 12.7 4.1 18.7c0 6.6 3.5 11.7 7.9 11.7s7.9-5.1 7.9-11.7C19.9 12.7 16.9 7.1 12 1.6Z" fill="currentColor"/><path d="M12 7.5v18" stroke="rgba(0,0,0,.10)" stroke-width="1" stroke-linecap="round"/></svg>';
+
+const hojaSVG = '<svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 2C5.5 8.5 3 15 3 21.5 3 27 7 30 12 30s9-3 9-8.5C21 15 18.5 8.5 12 2Z" fill="currentColor"/><path d="M12 8v18" stroke="rgba(0,0,0,.12)" stroke-width="1" stroke-linecap="round"/></svg>';
+
+const tulipanSVG = '<svg viewBox="0 0 64 132" fill="none" aria-hidden="true"><path d="M32 36V126" stroke="#6f9f6a" stroke-width="3.4" stroke-linecap="round"/><path d="M32 84c-10-1-15.6-6.2-16.6-15.2 9.4 0 15 5.2 16.6 15.2Z" fill="#79a874"/><path d="M32 96c9-.9 14-5.2 15-13-8.4 0-13.5 4.4-15 13Z" fill="#5c8b58"/><path d="M32 104c-13-1.6-20-9-21-21 12 0 19 7.5 21 21Z" fill="#6f9f6a"/><path d="M32 118c12-1 18.5-7.5 19.5-18-10.5 0-17.5 6-19.5 18Z" fill="#5c8b58"/><path d="M32 6c-3.6 3.8-6.1 8.2-6.1 13.4v6.2c0 8.2 2.7 13.4 6.1 13.4s6.1-5.2 6.1-13.4v-6.2C38.1 14.2 35.6 9.8 32 6Z" fill="currentColor"/><path d="M25.9 13.5c-4.6 3.6-7.2 8.7-7.2 14.3 0 6.2 2.6 10.8 6.1 12.2V26.5c0-4.1.2-8 1.1-13Z" fill="currentColor" opacity=".92"/><path d="M38.1 13.5c4.6 3.6 7.2 8.7 7.2 14.3 0 6.2-2.6 10.8-6.1 12.2V26.5c0-4.1-.2-8-1.1-13Z" fill="currentColor" opacity=".92"/></svg>';
+
+const birreteSVG = '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 11 3 24.5 32 38l29-13.5L32 11Z" fill="currentColor"/><path d="M15 32v12.5c0 4.7 7.6 8.5 17 8.5s17-3.8 17-8.5V32" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M57 25v18" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><circle cx="57" cy="45.5" r="3.4" fill="currentColor"/></svg>';
+
+/* ---------- Pétalos cayendo ---------- */
+function crearPetalos(){
+  if (reduceMotion) return;
+  const capa = $('#petalos');
+  if (!capa) return;
+
+  const colores = ['#e8c15f', '#f4dda2', '#d99a8a', '#c9a24a', '#e9c7b2'];
+  const total = window.innerWidth < 700 ? 12 : 20;
+
+  for (let i = 0; i < total; i++){
+    const el = document.createElement('span');
+    el.className = 'petalo-cae';
+    const ancho = 7 + Math.random() * 10;
+    el.style.left = (Math.random() * 100) + '%';
+    el.style.width = ancho + 'px';
+    el.style.height = (ancho * 1.4) + 'px';
+    el.style.color = colores[i % colores.length];
+    el.style.setProperty('--deriva2', (Math.random() * 130 - 65).toFixed(0) + 'px');
+    el.style.animationDuration = (12 + Math.random() * 11).toFixed(1) + 's';
+    el.style.animationDelay = (-Math.random() * 20).toFixed(1) + 's';
+    el.innerHTML = petaloSVG;
+    capa.appendChild(el);
+  }
+}
+
+/* ---------- Jardín de tulipanes ---------- */
+function crearJardin(cont, datos){
+  if (!cont) return;
+  datos.forEach((t) => {
+    const el = document.createElement('div');
+    el.className = 'jardin__tulipan';
+    el.style.left = t.x + '%';
+    el.style.setProperty('--alto', t.h + 'px');
+    el.style.color = t.c;
+    el.style.animationDelay = '-' + t.d + 's';
+    el.style.animationDuration = (5.4 + Math.random() * 2.2).toFixed(2) + 's';
+    el.style.opacity = (0.5 + Math.random() * 0.35).toFixed(2);
+    el.innerHTML = tulipanSVG;
+    el.addEventListener('click', () => soltarHojas(el));
+    cont.appendChild(el);
+  });
+}
+
+function soltarHojas(el){
+  if (reduceMotion) return;
+  const capa = $('#burst');
+  if (!capa) return;
+
+  const caja = el.getBoundingClientRect();
+  const cx = caja.left + caja.width / 2;
+  const cy = caja.top + caja.height * 0.22;
+  const cols = ['#6f9f6a', '#7fae74', '#5c8b58', '#e8c15f', '#d99a8a'];
+
+  el.animate([
+    { transform: 'rotate(0deg)' },
+    { transform: 'rotate(-5deg)' },
+    { transform: 'rotate(4deg)' },
+    { transform: 'rotate(0deg)' }
+  ], { duration: 480, easing: 'ease-in-out' });
+
+  for (let i = 0; i < 10; i++){
+    const h = document.createElement('div');
+    h.className = 'burst__petalo';
+    const size = 10 + Math.random() * 9;
+    h.style.left = (cx + (Math.random() * 30 - 15)) + 'px';
+    h.style.top = (cy + (Math.random() * 22 - 11)) + 'px';
+    h.style.width = size + 'px';
+    h.style.height = (size * 1.35) + 'px';
+    h.style.color = cols[i % cols.length];
+    h.innerHTML = (i % 3 === 0) ? petaloSVG : hojaSVG;
+    capa.appendChild(h);
+
+    const dx = Math.random() * 130 - 65;
+    const dy = 80 + Math.random() * 130;
+    const rot = Math.random() * 540 - 270;
+    const dur = 1100 + Math.random() * 900;
+
+    const anim = h.animate([
+      { transform: 'translate(-50%,-50%) rotate(0deg)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${rot}deg)`, opacity: 0 }
+    ], { duration: dur, easing: 'cubic-bezier(.3,.2,.4,1)', fill: 'forwards' });
+
+    anim.onfinish = () => h.remove();
+  }
+}
+
+/* ---------- Pintar los atardeceres ---------- */
+$('#soles').innerHTML = ATARDECERES.map((a, i) => `
+  <li class="atardecer revelar${a.final ? ' atardecer--final' : ''}" data-dia="${a.dia}" data-fecha="${a.final ? a.fecha + ' · TU GRADUACIÓN' : a.fecha}" style="transition-delay:${i * 55}ms">
+    <button class="atardecer__cielo" type="button"
+      data-foto="${a.foto}" data-alt="${a.alt}"
+      data-cap="${a.fecha} · ${a.alt}"
+      aria-label="Ampliar el atardecer del ${a.dia} de noviembre">
+      <img src="${a.foto}" alt="" loading="lazy" style="object-position:${a.pos}">
+      <span class="atardecer__num" aria-hidden="true">${a.n}</span>
+      <span class="atardecer__badge">${a.final ? a.fecha + ' · TU GRADUACIÓN' : a.fecha}</span>
+      <span class="atardecer__lupa" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>
+        </svg>
+      </span>
+    </button>
+    <p class="atardecer__frase">${a.frase}</p>
+  </li>`).join('');
+
+/* ---------- Cuenta regresiva ---------- */
+(function cuentaGraduacion(){
+  const num = $('#cuentaNum');
+  const label = $('#cuentaLabel');
+  const reloj = $('#relojAtardecer');
+  if (!num || !label || !reloj) return;
+
+  const tarjetas = Array.from(document.querySelectorAll('.atardecer'));
+
+  function diasHasta(){
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    const meta = new Date(FECHA_GRADUACION);
+    meta.setHours(0, 0, 0, 0);
+    return Math.round((meta - hoy) / 86400000);
+  }
+
+  function pintar(){
+    const ahora = new Date();
+    const dias = diasHasta();
+
+    if (dias > 0){
+      num.textContent = Math.min(7, dias + 1);
+      num.classList.remove('cuenta__num--hoy');
+      label.textContent = 'atardeceres para tu graduación';
+    } else if (dias === 0){
+      num.textContent = 'HOY';
+      num.classList.add('cuenta__num--hoy');
+      label.textContent = 'es tu graduación';
+    } else {
+      num.textContent = '0';
+      num.classList.remove('cuenta__num--hoy');
+      label.textContent = 'ya te graduaste';
+    }
+
+    const falta = Math.max(0, FECHA_GRADUACION - ahora);
+    if (falta > 0){
+      const d = Math.floor(falta / 86400000);
+      const h = Math.floor(falta / 3600000) % 24;
+      const m = Math.floor(falta / 60000) % 60;
+      const s = Math.floor(falta / 1000) % 60;
+      const prefijo = d > 0 ? `${d}d ` : '';
+      reloj.innerHTML = `Faltan <b>${prefijo}${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s</b> para tu graduación`;
+    } else {
+      reloj.innerHTML = 'La graduación ya llegó';
+    }
+
+    const hoy = new Date();
+    tarjetas.forEach((card) => {
+      const fechaCard = new Date(2026, 10, Number(card.dataset.dia));
+      const esHoy = hoy.getFullYear() === 2026 && hoy.getMonth() === 10 && hoy.getDate() === fechaCard.getDate();
+      card.classList.toggle('atardecer--hoy', esHoy);
+
+      const badge = card.querySelector('.atardecer__badge');
+      if (badge) badge.textContent = esHoy ? 'HOY' : card.dataset.fecha;
+      if (esHoy) card.setAttribute('aria-current', 'date');
+      else card.removeAttribute('aria-current');
+    });
+  }
+
+  pintar();
+  setInterval(pintar, 1000);
+})();
+
+/* ---------- Revelado al hacer scroll ---------- */
+let observerRevelado = null;
+function iniciarRevelado(){
+  const elems = document.querySelectorAll('.revelar');
+  if (reduceMotion || !('IntersectionObserver' in window)){
+    elems.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+  if (!observerRevelado){
+    observerRevelado = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observerRevelado.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  }
+  elems.forEach((el) => observerRevelado.observe(el));
+}
+
+/* ---------- Visor de fotos ---------- */
+const visor = $('#visor');
+const visorImg = $('#visorImg');
+const visorCap = $('#visorCap');
+const cerrarVisor = $('#cerrarVisor');
+let ultimoFoco = null;
+
+function abrirVisor(foto, alt, cap){
+  ultimoFoco = document.activeElement;
+  visorImg.src = foto;
+  visorImg.alt = alt;
+  visorCap.textContent = cap;
+  visor.classList.add('abierto');
+  visor.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('sin-scroll');
+  cerrarVisor.focus({ preventScroll: true });
+}
+
+function cerrar(){
+  visor.classList.remove('abierto');
+  visor.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('sin-scroll');
+  if (ultimoFoco) ultimoFoco.focus({ preventScroll: true });
+  setTimeout(() => {
+    if (!visor.classList.contains('abierto')){
+      visorImg.removeAttribute('src');
+      visorImg.alt = '';
+    }
+  }, 380);
+}
+
+document.addEventListener('click', (e) => {
+  const boton = e.target.closest('[data-foto]');
+  if (!boton) return;
+  abrirVisor(boton.dataset.foto, boton.dataset.alt, boton.dataset.cap);
+});
+
+cerrarVisor.addEventListener('click', cerrar);
+visor.addEventListener('click', (e) => {
+  if (e.target === visor) cerrar();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && visor.classList.contains('abierto')) cerrar();
+});
+
+/* ---------- Birretes flotando ---------- */
+function crearBirretes(){
+  const capa = $('#birretes');
+  if (!capa) return;
+
+  const datos = [
+    { x: 6,    y: 3,   s: 17, c: '#f4dda2', o: .46, d: 8.5,  delay: -1,   r: -8  },
+    { x: 84,   y: 2.5, s: 20, c: '#e8c15f', o: .4,  d: 10,   delay: -4,   r: 9   },
+    { x: 2.5,  y: 20,  s: 21, c: '#e8c15f', o: .32, d: 11,   delay: -2,   r: -11 },
+    { x: 93,   y: 29,  s: 16, c: '#f4dda2', o: .36, d: 9.5,  delay: -6,   r: 7   },
+    { x: 4,    y: 48,  s: 19, c: '#c9a24a', o: .33, d: 12,   delay: -3,   r: -6  },
+    { x: 92.5, y: 58,  s: 21, c: '#e8c15f', o: .3,  d: 10.5, delay: -7,   r: 12  },
+    { x: 5.5,  y: 76,  s: 17, c: '#f4dda2', o: .38, d: 9,    delay: -1.5, r: -9  },
+    { x: 91,   y: 86,  s: 19, c: '#c9a24a', o: .32, d: 12.5, delay: -5,   r: 8   },
+    { x: 88,   y: 12,  s: 15, c: '#f4dda2', o: .28, d: 8,    delay: -3.5, r: -5  }
+  ];
+
+  datos.forEach((b) => {
+    const el = document.createElement('span');
+    el.className = 'birrete';
+    el.style.setProperty('--x', b.x + '%');
+    el.style.setProperty('--y', b.y + '%');
+    el.style.setProperty('--s', b.s + 'px');
+    el.style.setProperty('--c', b.c);
+    el.style.setProperty('--o', b.o);
+    el.style.setProperty('--d', b.d + 's');
+    el.style.setProperty('--delay', b.delay + 's');
+    el.style.setProperty('--r', b.r + 'deg');
+    el.innerHTML = birreteSVG;
+    capa.appendChild(el);
+  });
+}
+
+/* ---------- Construir jardín, pétalos y birretes ---------- */
+(function jardinFinal(){
+  crearJardin($('#jardinFinal'), [
+    { x: 1,  h: 104, c: '#e8c15f', d: 0.3 },
+    { x: 11, h: 132, c: '#f4dda2', d: 1.4 },
+    { x: 22, h: 88,  c: '#d99a8a', d: 2.1 },
+    { x: 34, h: 142, c: '#c9a24a', d: 0.8 },
+    { x: 46, h: 96,  c: '#f4dda2', d: 2.6 },
+    { x: 58, h: 148, c: '#e8c15f', d: 1.1 },
+    { x: 70, h: 92,  c: '#d99a8a', d: 0.5 },
+    { x: 81, h: 126, c: '#f4dda2', d: 1.8 },
+    { x: 92, h: 108, c: '#c9a24a', d: 0.9 }
+  ]);
+})();
+
+crearPetalos();
+crearBirretes();
+iniciarRevelado();
+</script>
+</body>
+</html>
