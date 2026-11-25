@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#070d24" />
-<title>Siete atardeceres · Para Melida</title>
-<meta name="description" content="Siete atardeceres para Melida, del 21 al 27 de noviembre. Un regalo de Marcelo." />
+<title>Tiempo para graduarse · Melida</title>
+<meta name="description" content="Cinco atardeceres para Melida, del 23 al 27 de noviembre. Un regalo de Marcelo." />
 
 <!-- Tulipán como icono -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070d24'/%3E%3Cpath d='M32 41c-6.6 0-12-5.4-12-12V15.5c0-2.2 2.6-3.2 4.1-1.5L32 22l7.9-8c1.5-1.7 4.1-.7 4.1 1.5V29c0 6.6-5.4 12-12 12Z' fill='%23e8c15f'/%3E%3Cpath d='M32 22v17' stroke='%23c99b34' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M32 40v15' stroke='%2378c48f' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M32 55c-7-1.6-10.5-6.4-10.5-12 6.2 0 10.5 4.6 10.5 12Z' fill='%2378c48f'/%3E%3C/svg%3E" />
@@ -184,7 +184,7 @@
     filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
   }
 
-  /* ---------- Birretes flotando ---------- */
+  /* ---------- Birretes cayendo ---------- */
   .birretes{
     position:fixed; inset:0; z-index:3;
     overflow:hidden;
@@ -193,19 +193,32 @@
   .birrete{
     position:absolute;
     left:var(--x);
-    top:var(--y);
+    top:-12vh;
     width:var(--s);
     height:var(--s);
     color:var(--c, var(--oro));
-    opacity:var(--o, .3);
-    will-change:transform;
-    animation:flotarBirrete var(--d, 9s) var(--delay, 0s) ease-in-out infinite alternate;
+    opacity:0;
+    will-change:transform, opacity;
+    animation:caerBirrete var(--d, 14s) var(--delay, 0s) linear infinite;
     filter:drop-shadow(0 3px 7px rgba(0,0,0,.35));
   }
   .birrete svg{ display:block; width:100%; height:100%; }
-  @keyframes flotarBirrete{
-    from{ transform:translate3d(0,0,0) rotate(var(--r, -7deg)) scale(.96); }
-    to{ transform:translate3d(7px,-15px,0) rotate(calc(var(--r, -7deg) + 12deg)) scale(1.04); }
+  @keyframes caerBirrete{
+    0%{
+      transform:translate3d(0,-12vh,0) rotate(var(--r, 0deg)) scale(.92);
+      opacity:0;
+    }
+    9%{ opacity:var(--o, .4); }
+    50%{
+      transform:translate3d(var(--drift, 32px), 50vh, 0)
+                rotate(calc(var(--r, 0deg) + 170deg)) scale(1);
+    }
+    92%{ opacity:var(--o, .4); }
+    100%{
+      transform:translate3d(calc(var(--drift, 32px) * -1), 112vh, 0)
+                rotate(calc(var(--r, 0deg) + 340deg)) scale(.96);
+      opacity:0;
+    }
   }
 
   /* ============ SITIO ============ */
@@ -760,7 +773,7 @@
 
   <header class="hero">
     <p class="hero__etiqueta">Nuestra cuenta regresiva</p>
-    <h1 class="hero__nombres">Siete <em>atardeceres</em></h1>
+    <h1 class="hero__nombres">Cinco <em>atardeceres</em></h1>
     <span class="hero__linea" aria-hidden="true">
       <i></i>
       <svg viewBox="0 0 64 64" fill="none">
@@ -772,24 +785,24 @@
       <i></i>
     </span>
     <p class="hero__lugar">Marcelo <span class="hero__amp">&amp;</span> Melida</p>
-    <p class="hero__nota">Del 21 al 27 de noviembre, los cielos que faltan para tu graduación.</p>
+    <p class="hero__nota">Del 23 al 27 de noviembre, los cielos que faltan para tu graduación.</p>
   </header>
 
   <section class="panel panel--cuenta revelar" aria-labelledby="tituloCuenta">
     <p class="etiqueta">Cuenta regresiva</p>
     <h2 class="titulo-panel" id="tituloCuenta">Tu graduación</h2>
-    <p class="sub-panel">Los últimos siete cielos antes de ese día.</p>
+    <p class="sub-panel">Los últimos cinco cielos antes de ese día.</p>
 
     <div class="cuenta">
-      <span class="cuenta__num" id="cuentaNum" aria-hidden="true">7</span>
+      <span class="cuenta__num" id="cuentaNum" aria-hidden="true">5</span>
       <p class="cuenta__label" id="cuentaLabel">atardeceres para tu graduación</p>
       <p class="cuenta__reloj" id="relojAtardecer" aria-live="off">Calculando…</p>
     </div>
   </section>
 
   <section class="panel panel--soles revelar" aria-labelledby="tituloSoles">
-    <p class="etiqueta">Del 21 al 27 de noviembre</p>
-    <h2 class="titulo-panel" id="tituloSoles">Los siete cielos</h2>
+    <p class="etiqueta">Del 23 al 27 de noviembre</p>
+    <h2 class="titulo-panel" id="tituloSoles">Los cinco cielos</h2>
     <p class="sub-panel">Toca cada atardecer para verlo completo.</p>
     <ol class="soles" id="soles"></ol>
   </section>
@@ -835,7 +848,7 @@
 
 <script>
 /* ============================================================
-   SIETE ATARDECERES · PARA MELIDA
+   CINCO ATARDECERES · PARA MELIDA
    ============================================================ */
 
 const $ = (s) => document.querySelector(s);
@@ -844,45 +857,31 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 /* ---------- Datos de los atardeceres ---------- */
 const ATARDECERES = [
   {
-    n: '07', dia: 21, fecha: '21 NOV',
+    n: '05', dia: 23, fecha: '23 NOV',
     foto: 'fotos/atardecer-01.jpg',
     pos: 'center 58%',
     alt: 'Rayos de luz sobre las montañas al atardecer',
-    frase: 'Siete atardeceres y el cielo ya sabe que se acerca tu graduación.'
-  },
-  {
-    n: '06', dia: 22, fecha: '22 NOV',
-    foto: 'fotos/atardecer-02.jpg',
-    pos: 'center 55%',
-    alt: 'Atardecer entre nubes grises y árboles',
-    frase: 'Seis. Cada día que cae te acerca un poco más a ese título que tanto buscaste.'
-  },
-  {
-    n: '05', dia: 23, fecha: '23 NOV',
-    foto: 'fotos/atardecer-03.jpg',
-    pos: 'center 60%',
-    alt: 'Horizonte dorado bajo un cielo azul profundo',
     frase: 'Cinco. A esta hora, en algún lugar, tú también estás contando los días.'
   },
   {
     n: '04', dia: 24, fecha: '24 NOV',
-    foto: 'fotos/atardecer-04.jpg',
-    pos: 'center 62%',
-    alt: 'Cielo naranja intenso entre nubes',
+    foto: 'fotos/atardecer-02.jpg',
+    pos: 'center 55%',
+    alt: 'Atardecer entre nubes grises y árboles',
     frase: 'Cuatro. Todo el esfuerzo de estos años cabe en una sola palabra: orgullo.'
   },
   {
     n: '03', dia: 25, fecha: '25 NOV',
-    foto: 'fotos/atardecer-05.jpg',
-    pos: 'center 58%',
-    alt: 'Volcán al atardecer con una nube iluminada',
+    foto: 'fotos/atardecer-03.jpg',
+    pos: 'center 60%',
+    alt: 'Horizonte dorado bajo un cielo azul profundo',
     frase: 'Tres. Ya casi puedo contar las horas con una sola mano.'
   },
   {
     n: '02', dia: 26, fecha: '26 NOV',
-    foto: 'fotos/atardecer-02.jpg',
-    pos: 'center 70%',
-    alt: 'Nubes oscuras sobre un cielo dorado',
+    foto: 'fotos/atardecer-04.jpg',
+    pos: 'center 62%',
+    alt: 'Cielo naranja intenso entre nubes',
     frase: 'Dos. El sol se despide despacio, como si supiera lo que viene.'
   },
   {
@@ -1033,7 +1032,7 @@ $('#soles').innerHTML = ATARDECERES.map((a, i) => `
     const dias = diasHasta();
 
     if (dias > 0){
-      num.textContent = Math.min(7, dias + 1);
+      num.textContent = Math.min(5, dias + 1);
       num.classList.remove('cuenta__num--hoy');
       label.textContent = 'atardeceres para tu graduación';
     } else if (dias === 0){
@@ -1147,28 +1146,31 @@ function crearBirretes(){
   if (!capa) return;
 
   const datos = [
-    { x: 6,    y: 3,   s: 17, c: '#f4dda2', o: .46, d: 8.5,  delay: -1,   r: -8  },
-    { x: 84,   y: 2.5, s: 20, c: '#e8c15f', o: .4,  d: 10,   delay: -4,   r: 9   },
-    { x: 2.5,  y: 20,  s: 21, c: '#e8c15f', o: .32, d: 11,   delay: -2,   r: -11 },
-    { x: 93,   y: 29,  s: 16, c: '#f4dda2', o: .36, d: 9.5,  delay: -6,   r: 7   },
-    { x: 4,    y: 48,  s: 19, c: '#c9a24a', o: .33, d: 12,   delay: -3,   r: -6  },
-    { x: 92.5, y: 58,  s: 21, c: '#e8c15f', o: .3,  d: 10.5, delay: -7,   r: 12  },
-    { x: 5.5,  y: 76,  s: 17, c: '#f4dda2', o: .38, d: 9,    delay: -1.5, r: -9  },
-    { x: 91,   y: 86,  s: 19, c: '#c9a24a', o: .32, d: 12.5, delay: -5,   r: 8   },
-    { x: 88,   y: 12,  s: 15, c: '#f4dda2', o: .28, d: 8,    delay: -3.5, r: -5  }
+    { x: 1.5,  s: 22, c: '#e8c15f', o: .52, d: 15,   delay: -2,  r: -18, drift: 34   },
+    { x: 3.5,  s: 17, c: '#f4dda2', o: .42, d: 12,   delay: -7,  r: 12,  drift: -28  },
+    { x: 5.5,  s: 20, c: '#e8c15f', o: .48, d: 17,   delay: -11, r: -8,  drift: 40   },
+    { x: 7.5,  s: 15, c: '#c9a24a', o: .36, d: 13,   delay: -4,  r: 22,  drift: -34  },
+    { x: 6.8,  s: 18, c: '#f4dda2', o: .34, d: 19,   delay: -16, r: -14, drift: 30   },
+    { x: 89,   s: 16, c: '#f4dda2', o: .38, d: 13,   delay: -3,  r: -16, drift: 32   },
+    { x: 90,   s: 19, c: '#e8c15f', o: .5,  d: 16,   delay: -5,  r: 15,  drift: -38  },
+    { x: 92,   s: 22, c: '#f4dda2', o: .44, d: 14,   delay: -1,  r: -20, drift: 26   },
+    { x: 93.5, s: 18, c: '#e8c15f', o: .46, d: 18,   delay: -13, r: 8,   drift: -30  },
+    { x: 95.5, s: 14, c: '#f4dda2', o: .35, d: 12,   delay: -8,  r: -12, drift: 24   },
+    { x: 2.5,  s: 20, c: '#c9a24a', o: .4,  d: 10.5, delay: -6,  r: 18,  drift: -32  },
+    { x: 94,   s: 16, c: '#c9a24a', o: .4,  d: 11.5, delay: -10, r: -10, drift: 36   }
   ];
 
   datos.forEach((b) => {
     const el = document.createElement('span');
     el.className = 'birrete';
     el.style.setProperty('--x', b.x + '%');
-    el.style.setProperty('--y', b.y + '%');
     el.style.setProperty('--s', b.s + 'px');
     el.style.setProperty('--c', b.c);
     el.style.setProperty('--o', b.o);
     el.style.setProperty('--d', b.d + 's');
     el.style.setProperty('--delay', b.delay + 's');
     el.style.setProperty('--r', b.r + 'deg');
+    el.style.setProperty('--drift', b.drift + 'px');
     el.innerHTML = birreteSVG;
     capa.appendChild(el);
   });
