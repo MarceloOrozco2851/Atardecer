@@ -953,9 +953,11 @@ const ATARDECERES = [
   },
   {
     n: '07', dia: 27, fecha: '27 NOV',
-    bloqueado: true,
-    final: true,
-    mensaje: 'Se desbloquea el día de tu graduación.'
+    foto: 'fotos/atardecer-07.jpg',
+    pos: 'center 58%',
+    alt: 'Atardecer dorado con el volcán en silueta',
+    frase: 'Siete. Es tu graduación, y no hay cielo que alcance para lo orgulloso que estoy de ti.',
+    final: true
   }
 ];
 
@@ -1153,7 +1155,11 @@ $('#soles').innerHTML = ATARDECERES.map((a, i) => {
       card.classList.toggle('atardecer--hoy', esHoy);
 
       const badge = card.querySelector('.atardecer__badge');
-      if (badge) badge.textContent = esHoy ? 'HOY' : card.dataset.fecha;
+      if (badge){
+        badge.textContent = esHoy
+          ? (card.classList.contains('atardecer--final') ? 'HOY · TU GRADUACIÓN' : 'HOY')
+          : card.dataset.fecha;
+      }
       if (esHoy) card.setAttribute('aria-current', 'date');
       else card.removeAttribute('aria-current');
     });
